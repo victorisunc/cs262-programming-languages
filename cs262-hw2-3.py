@@ -91,7 +91,7 @@ states = ( ('comment', 'exclusive'), )
 
 
 t_ignore = ' \t\v\r' # whitespace
-t_comment_ignore = ' '
+t_comment_ignore = t_ignore
 
 # first 3 functions to skip the /* ... */ comments
 def t_comment(token):

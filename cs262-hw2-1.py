@@ -69,7 +69,7 @@ tokens = ('NUM', 'ID')
 ####
 def t_NUM_hex(token):
   # r'[0x]+[0-9a-f]+'
-  r'0x0|0x[0-9a-f]+'
+  r'0x[0-9a-f]+'
   token.value = int(token.value, 16)
   # convert to decimal base
   # print 'HEX: %s' % token.value

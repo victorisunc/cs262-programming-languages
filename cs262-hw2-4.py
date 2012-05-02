@@ -48,20 +48,20 @@ tokens = (
 )
 
 def t_IDENTIFIER(token):
-  r'[a-zA-Z]+[a-zA-Z_]*'
+  r'[a-zA-Z][a-zA-Z_]*'
   return token
 
 def t_NUMBER(token):
-  r'-?([0-9])+(?:\.[0-9]*)?'
+  # r'-?([0-9])+(?:\.[0-9]*)?' # my solution
+  r'-?[0-9]+(?:\.[0-9]*)?' # udacity's solution
   token.value = float(token.value)
   return token
 
 def t_STRING(token):
-  # r'\"(?:[ a-zA-Z]|\\")+\"'
-  r'\".*\"'
+  # r'\".*\"' # my solution
+  r'"([^"\\]|(\\.))*"' # udacity's solution
   token.value = token.value[1:-1]
   return token
-
 
 t_ignore                = ' \t\v\r' # whitespace
 
