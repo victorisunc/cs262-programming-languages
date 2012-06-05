@@ -1,0 +1,194 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> re
+Rule 1     re -> LETTER
+Rule 2     re -> re re
+Rule 3     re -> re BAR re
+Rule 4     re -> re STAR
+Rule 5     re -> LPAREN re RPAREN
+
+Terminals, with rules where they appear
+
+BAR                  : 3
+LETTER               : 1
+LPAREN               : 5
+RPAREN               : 5
+STAR                 : 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+re                   : 2 2 3 3 4 5 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . re
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    LETTER          shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    re                             shift and go to state 2
+
+state 1
+
+    (1) re -> LETTER .
+
+    BAR             reduce using rule 1 (re -> LETTER .)
+    STAR            reduce using rule 1 (re -> LETTER .)
+    LETTER          reduce using rule 1 (re -> LETTER .)
+    LPAREN          reduce using rule 1 (re -> LETTER .)
+    $end            reduce using rule 1 (re -> LETTER .)
+    RPAREN          reduce using rule 1 (re -> LETTER .)
+
+
+state 2
+
+    (0) S' -> re .
+    (2) re -> re . re
+    (3) re -> re . BAR re
+    (4) re -> re . STAR
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    BAR             shift and go to state 6
+    STAR            shift and go to state 4
+    LETTER          shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    re                             shift and go to state 5
+
+state 3
+
+    (5) re -> LPAREN . re RPAREN
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    LETTER          shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    re                             shift and go to state 7
+
+state 4
+
+    (4) re -> re STAR .
+
+    BAR             reduce using rule 4 (re -> re STAR .)
+    STAR            reduce using rule 4 (re -> re STAR .)
+    LETTER          reduce using rule 4 (re -> re STAR .)
+    LPAREN          reduce using rule 4 (re -> re STAR .)
+    $end            reduce using rule 4 (re -> re STAR .)
+    RPAREN          reduce using rule 4 (re -> re STAR .)
+
+
+state 5
+
+    (2) re -> re re .
+    (2) re -> re . re
+    (3) re -> re . BAR re
+    (4) re -> re . STAR
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    BAR             reduce using rule 2 (re -> re re .)
+    LETTER          reduce using rule 2 (re -> re re .)
+    LPAREN          reduce using rule 2 (re -> re re .)
+    $end            reduce using rule 2 (re -> re re .)
+    RPAREN          reduce using rule 2 (re -> re re .)
+    STAR            shift and go to state 4
+
+  ! STAR            [ reduce using rule 2 (re -> re re .) ]
+  ! BAR             [ shift and go to state 6 ]
+  ! LETTER          [ shift and go to state 1 ]
+  ! LPAREN          [ shift and go to state 3 ]
+
+    re                             shift and go to state 5
+
+state 6
+
+    (3) re -> re BAR . re
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    LETTER          shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    re                             shift and go to state 8
+
+state 7
+
+    (5) re -> LPAREN re . RPAREN
+    (2) re -> re . re
+    (3) re -> re . BAR re
+    (4) re -> re . STAR
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    RPAREN          shift and go to state 9
+    BAR             shift and go to state 6
+    STAR            shift and go to state 4
+    LETTER          shift and go to state 1
+    LPAREN          shift and go to state 3
+
+    re                             shift and go to state 5
+
+state 8
+
+    (3) re -> re BAR re .
+    (2) re -> re . re
+    (3) re -> re . BAR re
+    (4) re -> re . STAR
+    (1) re -> . LETTER
+    (2) re -> . re re
+    (3) re -> . re BAR re
+    (4) re -> . re STAR
+    (5) re -> . LPAREN re RPAREN
+
+    BAR             reduce using rule 3 (re -> re BAR re .)
+    LETTER          reduce using rule 3 (re -> re BAR re .)
+    LPAREN          reduce using rule 3 (re -> re BAR re .)
+    $end            reduce using rule 3 (re -> re BAR re .)
+    RPAREN          reduce using rule 3 (re -> re BAR re .)
+    STAR            shift and go to state 4
+
+  ! STAR            [ reduce using rule 3 (re -> re BAR re .) ]
+  ! BAR             [ shift and go to state 6 ]
+  ! LETTER          [ shift and go to state 1 ]
+  ! LPAREN          [ shift and go to state 3 ]
+
+    re                             shift and go to state 5
+
+state 9
+
+    (5) re -> LPAREN re RPAREN .
+
+    BAR             reduce using rule 5 (re -> LPAREN re RPAREN .)
+    STAR            reduce using rule 5 (re -> LPAREN re RPAREN .)
+    LETTER          reduce using rule 5 (re -> LPAREN re RPAREN .)
+    LPAREN          reduce using rule 5 (re -> LPAREN re RPAREN .)
+    $end            reduce using rule 5 (re -> LPAREN re RPAREN .)
+    RPAREN          reduce using rule 5 (re -> LPAREN re RPAREN .)
+
